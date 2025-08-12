@@ -1,6 +1,6 @@
 +++
 title = "Manual Automation"
-date = 2025-08-12T12:00:00Z
+date = 2025-08-11T12:00:00Z
 draft = false
 tags = ["gitops", "argocd", "devops", "kubernetes"]
 categories = ["Technology"]
