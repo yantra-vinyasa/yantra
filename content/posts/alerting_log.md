@@ -65,14 +65,14 @@ spec:
     enabled: true
     selector:
       matchLabels:
-        openshift.io/cluster-monitoring: "true"
+        openshift.io/log-alerting: 'true'
     namespaceSelector:
       matchLabels:
-        openshift.io/cluster-monitoring: "true"
+        openshift.io/log-alerting: 'true'
 ```
 
 *   `rules.enabled: true`: Activates the alerting engine.
-*   `selector` & `namespaceSelector`: Configures the engine to automatically discover `AlertingRule` resources that have the label `openshift.io/cluster-monitoring: "true"`.
+*   `selector` & `namespaceSelector`: Configures the engine to automatically discover `AlertingRule` resources that have the label `openshift.io/log-alerting: 'true'`.
 
 Apply the updated `LokiStack` configuration and verify that the `loki-ruler` pods are running.
 
@@ -119,7 +119,7 @@ apiVersion: loki.grafana.com/v1
 kind: AlertingRule
 metadata:
   labels:
-    openshift.io/cluster-monitoring: "true"
+    openshift.io/log-alerting: 'true'
   name: kube-apiserver-log-alerts
   namespace: openshift-kube-apiserver
 spec:
@@ -148,7 +148,7 @@ apiVersion: loki.grafana.com/v1
 kind: AlertingRule
 metadata:
   labels:
-    openshift.io/cluster-monitoring: "true"
+    openshift.io/log-alerting: 'true'
   name: kube-apiserver-audit-alerts
   namespace: openshift-logging
 spec:
@@ -174,7 +174,7 @@ This procedure is for creating rules that monitor application-specific logs.
 
 **Prerequisites:**
 *   The developer has permissions to create `AlertingRule` resources in their project namespace.
-*   The project namespace and the `AlertingRule` resource are both labeled to match the `namespaceSelector` and `selector` in the `LokiStack` CR (e.g., `openshift.io/cluster-monitoring: "true"`).
+*   The project namespace and the `AlertingRule` resource are both labeled to match the `namespaceSelector` and `selector` in the `LokiStack` CR (e.g., `openshift.io/log-alerting: 'true'`).
 
 **Application Alert Example:**
 This rule fires if an application server logs more than 10 errors per minute.
@@ -185,7 +185,7 @@ apiVersion: loki.grafana.com/v1
 kind: AlertingRule
 metadata:
   labels:
-    openshift.io/cluster-monitoring: "true"
+    openshift.io/log-alerting: 'true'
   name: my-app-server-alerts
   namespace: my-app-namespace
 spec:
@@ -240,4 +240,3 @@ By following these steps, you can effectively implement a robust, version-contro
 *   **[OpenShift Logging Documentation](https://docs.redhat.com/en/documentation/red_hat_openshift_logging/6.3)**: Official Red Hat documentation for the Loki-based logging stack.
 *   **[Grafana Loki Documentation](https://grafana.com/docs/loki/latest/)**: Comprehensive documentation for Grafana Loki.
 *   **[LogQL Query Language](https://grafana.com/docs/loki/latest/logql/)**: Detailed guide on Loki's query language for writing effective alert expressions.
-
