@@ -2,3 +2,12 @@ baseURL = 'https://yantra-vinyasa.github.io/'
 languageCode = 'en-us'
 title = 'yantra-vinyasa'
 theme = 'PaperMod'
+
+[params]
+  [params.mermaid]
+    enable = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
