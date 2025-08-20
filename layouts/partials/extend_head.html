@@ -1,0 +1,8 @@
+{{- /*
+    This file is used to extend the head of the page.
+    It is a clean way to add custom scripts and styles without overriding the theme's head.html.
+*/ -}}
+
+{{- if .Params.mermaid -}}
+    {{- partial "mermaid.html" . -}}
+{{- end -}}
